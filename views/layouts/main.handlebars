@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Dashboard</title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1" />
+<style type="text/css">
+			body {
+				background: #212121;
+				font-family: verdana, arial, sans-serif;
+				color: #444444;
+				font-size: 12px;
+				margin: 0px;
+			}
+			.weather_small img {
+				width: 50px;
+				height: 50px;
+			}
+
+			div#container {
+				width: 1024px;
+			/*	height: 800px;*/
+				margin: 0px auto;
+				color: #eee;
+				padding: 0px;
+				float:left;
+			}
+
+			div#left {
+				width: 220px;
+				float:left;
+			}
+
+			div#right {
+			    width: 750px;
+				float: left;
+				margin-left:40px;
+			}
+
+			div#bottom {
+				width: 1024px;
+				float:left;
+			    padding-left: 220px;
+			    position: absolute;
+			    bottom: 0;
+			    padding-bottom: 30px;
+			}
+
+
+			.btn {
+			  margin: 5px 5px;
+			  display: block;
+			  text-align: center;
+			}
+
+			.btn {
+			  background: #333;
+			  background-image: -webkit-linear-gradient(top, #333, #111);
+			  background-image: -moz-linear-gradient(top, #333, #111);
+			  background-image: -ms-linear-gradient(top, #333, #111);
+			  background-image: -o-linear-gradient(top, #333, #111);
+			  background-image: linear-gradient(to bottom, #333, #111);
+			  -webkit-border-radius: 28;
+			  -moz-border-radius: 28;
+			  border-radius: 28px;
+			  font-family: Arial;
+			  color: #eee;
+			  font-size: 300%;
+			  padding: 20px;
+			  border: solid #ccc 2px;
+			  text-decoration: none;
+			}
+
+			.btn:hover {
+			  background: #999999;
+			  background-image: -webkit-linear-gradient(top, #999999, #707070);
+			  background-image: -moz-linear-gradient(top, #999999, #707070);
+			  background-image: -ms-linear-gradient(top, #999999, #707070);
+			  background-image: -o-linear-gradient(top, #999999, #707070);
+			  background-image: linear-gradient(to bottom, #999999, #707070);
+			  text-decoration: none;
+			}
+
+			.active {
+			  background: #999;
+			  background-image: -webkit-linear-gradient(top, #999, #707070);
+			  background-image: -moz-linear-gradient(top, #999, #707070);
+			  background-image: -ms-linear-gradient(top, #999, #707070);
+			  background-image: -o-linear-gradient(top, #999, #707070);
+			  background-image: linear-gradient(to bottom, #999, #707070);
+			  color: #eee;
+			  border: solid #ccc 2px;
+			}
+
+			.scene {
+				/*display: inline;
+				padding: 20px;*/
+				background: #000f4d;
+			  background-image: -webkit-linear-gradient(top, #000f4d, #111);
+			  background-image: -moz-linear-gradient(top, #000f4d, #111);
+			  background-image: -ms-linear-gradient(top, #000f4d, #111);
+			  background-image: -o-linear-gradient(top, #00294d, #111);
+			  background-image: linear-gradient(to bottom, #00294d, #111);
+			  color: #eee;
+			  border: solid #ccc 2px;
+			}
+
+			#weather_current {
+				float:left;
+			}
+
+			#weather_week {
+				float:left;
+				display: block;
+				font-size: 230%;
+				bottom: 0;
+			/*	position: absolute; */
+				margin-top: 10px;
+			}
+
+			#nexts {
+				float:left;
+				display: block;
+				font-size: 200%;
+			}
+
+			#weather_hourly {
+				float:left;
+				margin-top:10px;
+				font-size: 20px;
+			}
+
+			#weather_top {
+				float:left;
+				display: block;
+				padding-bottom: 15px;
+			}
+			.icon {
+				display: block;
+			}
+			.chance {
+				font-weight: bold;
+			}
+			.block {
+				display: block;
+			}
+			.bold {
+				font-weight: bold;
+			}
+			.day {
+				float:left;
+			    text-align: center;
+    			margin: 0 20px;
+			}
+			#temp {
+				font-size: 400%;
+				padding-bottom: 0;
+			}
+			#weather_icon {
+			    width: 300px;
+			    float: left;
+			    text-align: center;
+			    margin: 0 10px 10px 0;
+			}
+			.conditions {
+				float:left;
+			}
+			.conditions .block {
+				margin-bottom: 5px;
+			}
+			.conditions_left {
+				float:left;
+				font-size: 200%;
+				margin-top: -10px;
+			}
+			.conditions_right {
+				float:left;
+				font-size: 200%;
+				margin: 5px 0 0 20px;
+			}
+			#current_state {
+				text-align: center;
+				bottom: 0;
+				width:100%;
+				font-size: 200%;
+				font-weight: bold;
+			}
+			.hour {
+				padding-bottom: 5px;
+			}
+			.hour_icon {
+				height: 20px;
+			}
+			.hour_icon2 {
+				margin-top: 5px;
+			}
+			#datetime {
+				display: block;
+				font-size: 300%;
+				vertical-align: middle;
+				padding-bottom: 5px;
+			}
+			#date {
+				vertical-align: middle;
+			}
+			#time {
+				vertical-align: middle;
+				font-size: 150%;
+				font-weight: bold;
+			}
+			.next {
+				padding-bottom: 20px;
+			}
+			.next_hour {
+				font-size: 230%;
+				margin-top: 10px;
+				float:left;
+			}
+			#next_day {
+				color: #a7a7a7;
+			}
+			#next_week {
+				color: #a7a7a7;
+			}
+			#high {
+				color: #ad3c3c;
+			}
+			#low {
+				color: #2953d6;
+				margin-top: -10px;
+			}
+			.primary {
+				color: #ccc;
+			}
+			.secondary {
+				color: #aaa;
+			}
+			#highlow {
+				display: block;
+				font-size: 175%;
+			}
+			#sunriseset {
+				display: block;
+				margin-top: 15px;
+			}
+			.conditons_other {
+				margin-top: 5px;
+			}
+			.rain_days {
+				display: block;
+				font-size: 90%;
+			}
+			.chance_of_rain {
+				color: rgb(115, 231, 255);
+			}
+			#weather {
+				float:left;
+			}
+
+			.clearfix:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+			.clearfix {display:inline-block;}
+			/* Hide from IE Mac \*/
+			.clearfix {display:block;}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/weather-icons-wind.min.css">
+		<link rel="stylesheet" type="text/css" href="css/weather-icons.min.css">
+		<script src="js/skycons.js"></script>
+
+		<script type="text/javascript">
+			function myFunction () {
+			    window.location.reload();
+			}
+
+			var interval = setInterval(function () { myFunction(); }, 300000);
+
+
+		    function startTime() {
+		        var today = new Date();
+		        var h = today.getHours();
+		        var m = today.getMinutes();
+		        m = checkTime(m);
+		        document.getElementById('time').innerHTML = h + ":" + m;
+		        var t = setTimeout(startTime, 30000);
+		    }
+		    function checkTime(i) {
+		        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+		        return i;
+		    }
+		</script>
+		<link rel="icon" type="image/png" href="dashboard.png" /> <!-- 16x16 -->
+		<link rel="apple-touch-icon" href="Dashboard.png" /> <!-- 114x114 -->
+</head>
+<body onload="startTime()">
+	<div id="container">
+		<div id="left">
+      <a href="/" class="btn{{weather_active}}">Weather</a>
+			<a href="/lights" class="btn{{lights_active}}">Lights</a>
+			<a href="/music" class="btn{{music_active}}">Music</a>
+			<a href="/devices" class="btn">Devices</a>
+			<a href="/events" class="btn">Events</a>
+			<a href="/scenes/wake_up" class="btn scene">Wake Up</a>
+			<a href="/scenes/leaving" class="btn scene">Leaving</a>
+			<a href="/scenes/bedtime" class="btn scene">Bedtime</a>
+		</div>
+		<div id="right">
+			<!--dynamic content-->
+			<div id="datetime">
+	        	<span id="time">{{current_time}}</span>
+	        	&nbsp;&nbsp;&nbsp;<span id="date">{{current_date}}</span>
+	        </div>
+	      	{{{body}}}
+			<!--dynamic content-->
+		</div>
+	</div>
+
+</body>
+</html>
