@@ -1,0 +1,70 @@
+<!--Weather-->
+<div id="weather">
+	<div id="weather_top">
+		<div id="weather_current">
+			<div id="weather_icon">
+				<canvas id="current_icon" height="260" width="260"></canvas>
+				<span id="current_state">{{weather.currently.summary}}</span>
+			</div>
+			<div class="conditions">
+				<div class="conditions_left">
+					<div class="block" id="temp"><span class="bold">{{current.temp}}</span>&deg;F</div>
+					<div class="conditons_other">
+						<span class="block secondary"><span id="chance" class="bold primary{{#if current.chance}} chance_of_rain{{/if}}">{{current.rain}}%</span> chance of rain</span>
+						<span class="block secondary"><span id="wind" class="bold primary"><i class="wi wi-wind towards-{{current.bearing}}-deg"></i> {{current.windspeed}} MPH</span> wind </span>
+						<span class="block secondary"><span id="humidity" class="bold primary">{{current.humidity}}%</span> humidity</span>
+					</div>
+				</div>
+				<div class="conditions_right">
+					<div id="highlow">
+						<span id="high" class="block">H {{current.high}}&deg;</span>
+						<span id="low" class="block">L {{current.low}}&deg;</span>
+					</div>
+					<div id="sunriseset">
+						<span class="block"><i class="wi wi-sunrise"></i> {{current.sunrise}}</span>
+						<span class="block"><i class="wi wi-sunset"></i> {{current.sunset}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="next_hour">
+				{{weather.minutely.summary}}
+			</div>
+		</div>
+	</div>
+	<div id="nexts">
+		<span class="block next"><span class="bold" id="next_day">NEXT 24 HOURS</span> {{weather.hourly.summary}}</span>
+		<span class="block next"><span class="bold" id="next_week">NEXT 7 DAYS</span> {{weather.daily.summary}}</span>
+	</div>
+
+	<div id="weather_week">
+	{{#each days}}
+		<div class="day">
+			<div class="icon"><canvas id="day{{count}}" height="40" width="40"></canvas></div>
+			<div class="temps">
+				<span class="block">{{time}}</span>
+				<span class="block">H {{high}}&deg;</span>
+				<span class="block">L {{low}}&deg;</span>
+				<span class="rain_days{{#if chance}} chance_of_rain{{/if}}"><i class="wi wi-raindrop">&nbsp;</i>{{rain}}%</span>
+			</div>
+		</div>
+	{{/each}}
+	</div>
+</div>
+<script type="text/javascript">
+	var skycons = new Skycons({"color": "#eee"});
+	skycons.add("current_icon", '{{weather.currently.icon}}');
+	skycons.add("hour1", Skycons.PARTLY_CLOUDY_DAY);
+	skycons.add("hour2", Skycons.PARTLY_CLOUDY_DAY);
+	skycons.add("hour3", Skycons.PARTLY_CLOUDY_DAY);
+	skycons.add("hour4", Skycons.PARTLY_CLOUDY_DAY);
+	skycons.add("hour5", Skycons.PARTLY_CLOUDY_DAY);
+	skycons.add("day1", '{{days.1.icon}}');
+	skycons.add("day2", '{{days.2.icon}}');
+	skycons.add("day3", '{{days.3.icon}}');
+	skycons.add("day4", '{{days.4.icon}}');
+	skycons.add("day5", '{{days.5.icon}}');
+	skycons.add("day6", '{{days.6.icon}}');
+	skycons.add("day7", '{{days.7.icon}}');
+	skycons.play();
+</script>
+<!--Weather-->
